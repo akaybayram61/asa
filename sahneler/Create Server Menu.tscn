@@ -1,0 +1,99 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://kaynaklar/MenuFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://kaynaklar/MenuFont_Siyah.tres" type="DynamicFont" id=2]
+[ext_resource path="res://sahneler/MenuBg.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scriptler/Create Server Menu.gd" type="Script" id=4]
+
+[node name="Create Server Menu" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="MenuBg" parent="." instance=ExtResource( 3 )]
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1280.0
+margin_bottom = 720.0
+rect_pivot_offset = Vector2( -376, 106 )
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -150.0
+margin_right = 200.0
+margin_bottom = 200.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+margin_right = 404.0
+margin_bottom = 350.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+margin_right = 404.0
+margin_bottom = 50.0
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+margin_right = 170.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 170, 50 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "Server Port:"
+align = 1
+valign = 1
+
+[node name="ServerPort" type="LineEdit" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 174.0
+margin_right = 404.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 230, 0 )
+custom_fonts/font = ExtResource( 1 )
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+margin_top = 54.0
+margin_right = 404.0
+margin_bottom = 104.0
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2"]
+margin_right = 170.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 170, 50 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "Max Player:"
+align = 1
+valign = 1
+
+[node name="MaxPlayer" type="LineEdit" parent="Control/MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+margin_left = 174.0
+margin_right = 404.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 230, 0 )
+custom_fonts/font = ExtResource( 1 )
+
+[node name="CreateServer" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+margin_top = 108.0
+margin_right = 404.0
+margin_bottom = 178.0
+rect_min_size = Vector2( 0, 70 )
+custom_fonts/font = ExtResource( 1 )
+text = "Create Server"
+
+[node name="Back" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+margin_top = 182.0
+margin_right = 404.0
+margin_bottom = 252.0
+rect_min_size = Vector2( 0, 70 )
+custom_fonts/font = ExtResource( 1 )
+text = "Back"
