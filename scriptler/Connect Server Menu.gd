@@ -1,5 +1,7 @@
 extends Node2D
 
+signal connect_server
+
 var client_data = {
     "ip": "127.0.0.1",
     "port": "1261",    
@@ -9,6 +11,8 @@ onready var ip_address_text: LineEdit = $"%IpAddress"
 onready var port_text: LineEdit = $"%Port"
 onready var connect_button: Button = $"%Connect"
 onready var back_button: Button = $"%Back"
+
+onready var controller := get_parent()
 
 func _ready():
     connect_button.connect("button_down", self, "_connect_button_pressed")
@@ -30,6 +34,7 @@ func _connect_button_pressed():
     file.open("res://client_data.res", File.WRITE)
     file.store_string(var2str(client_data))
     file.close()
+    emit_signal("connect_server", client_data.ip, client_data.port)
     
     
 func _back_button_pressed():

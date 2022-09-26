@@ -1,5 +1,8 @@
 extends Node2D
 
+signal start_server
+
+onready var controller := get_parent()
 onready var server_port_text: LineEdit = $"%ServerPort"
 onready var max_player_text: LineEdit = $"%MaxPlayer"
 onready var create_server_button: Button = $"%CreateServer"
@@ -9,7 +12,6 @@ var server_data = {
     "port": "1261",
     "max_player": "10",    
 }
-
 
 func _ready():
     var file = File.new()
@@ -31,8 +33,8 @@ func _create_server_button_pressed():
     file.open("res://server_data.res", File.WRITE)
     file.store_string(var2str(server_data))
     file.close()
-    
-    
+    emit_signal("start_server", server_data.port, server_data.max_player)
+    queue_free()
     
 func _back_button_pressed():
     queue_free()

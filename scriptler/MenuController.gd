@@ -23,5 +23,4 @@ func resume_game():
     pause_menu.visible = false
     back_button.visible = false
     in_game_menu.visible = true
-    
-    
+
