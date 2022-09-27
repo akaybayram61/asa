@@ -15,9 +15,15 @@ var server_data = {
 
 func _ready():
     var file = File.new()
-    file.open("res://server_data.res", File.READ)
-    server_data = str2var(file.get_as_text())
-    file.close()
+    var hata = file.open("user://server_data.res", File.READ)
+    
+    if hata == OK:
+        server_data = str2var(file.get_as_text())
+        file.close()
+    else:
+        file.open("user://server_data.res", File.WRITE)
+        file.store_string(var2str(server_data))
+        file.close()
     
     create_server_button.connect("button_down", self, "_create_server_button_pressed")
     back_button.connect("button_down", self, "_back_button_pressed")
@@ -30,7 +36,7 @@ func _create_server_button_pressed():
     server_data.max_player = max_player_text.text
     
     var file = File.new()
-    file.open("res://server_data.res", File.WRITE)
+    file.open("user://server_data.res", File.WRITE)
     file.store_string(var2str(server_data))
     file.close()
     emit_signal("start_server", server_data.port, server_data.max_player)

@@ -22,9 +22,14 @@ var player_colors = [
 
 func _ready():
     var file = File.new()
-    file.open("res://player_data.res", File.READ)
-    player_data = str2var(file.get_as_text())
-    file.close()
+    var hata = file.open("user://player_data.res", File.READ)
+    if OK == hata:
+        player_data = str2var(file.get_as_text())
+        file.close()
+    else:
+        file.open("user://player_data.res", File.WRITE)
+        file.store_string(var2str(player_data))
+        file.close()
     
     save_button.connect("button_down", self, "_save_button")
     back_button.connect("button_down", self, "_back_button")
@@ -51,7 +56,7 @@ func _save_button():
     
     # save player data
     var file = File.new()
-    file.open("res://player_data.res", File.WRITE)
+    file.open("user://player_data.res", File.WRITE)
     file.store_string(var2str(player_data))
     file.close()
     
