@@ -8,11 +8,25 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node",
+"class": "Controller",
+"language": "GDScript",
+"path": "res://scriptler/Controller.gd"
+} ]
+_global_script_class_icons={
+"Controller": ""
+}
+
 [application]
 
 config/name="anadolu_sigortaya_amelelik"
 run/main_scene="res://sahneler/Menu.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Utils="*res://scriptler/Utils.gd"
 
 [display]
 

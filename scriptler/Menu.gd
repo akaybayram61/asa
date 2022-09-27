@@ -43,6 +43,9 @@ func _start_server(server_port, max_players):
     controller.add_child(on)
     controller.move_child(on, 0)
     on.setup_server(server_port, max_players)
+    
+    # server oyuncuyu ekle
+    Utils.create_player(1, false, on.get_node("lobi"))
     controller.resume_game()
 
 func _connect_server(server_ip, server_port):
