@@ -5,7 +5,7 @@ onready var remote_player_scene := preload("res://sahneler/RemotePlayer.tscn")
 onready var real_player_scene := preload("res://sahneler/RealPlayer.tscn")
 
 func create_player(player_id, is_remote, lobi):
-    var controller: Controller
+    var controller
     if is_remote:
         controller = remote_player_scene.instance()
     else:

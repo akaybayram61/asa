@@ -12,6 +12,7 @@ var commands = [ 0.0, 0.0, 0.0, 0.0 ]
 # ileride animasyon icin lazim olacak
 # onready var animation_player := $AnimationPlayer
 onready var sprite := $Sprite
+onready var controller := get_node("controller")
 
 func _process(delta):
     # oyuncu durum makinesi ile kontrol edilirse uzak oyuncularin
@@ -35,6 +36,9 @@ func _physics_process(delta):
     input_vector.y = commands[DOWN] - commands[UP]
     input_vector = input_vector.normalized()
     
+    if controller.has_method("is_player"):
+        rpc_unreliable("network_update", position)
+        
     move_and_slide(input_vector * speed)
     
     
@@ -56,3 +60,6 @@ func attack_state():
     
 func idle_state():
     pass
+
+sync func network_update(pos):
+    position = pos

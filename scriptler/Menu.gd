@@ -12,6 +12,8 @@ var create_server_menu: PackedScene = preload("res://sahneler/Create Server Menu
 var connect_server_menu: PackedScene = preload("res://sahneler/Connect Server Menu.tscn")
 var oyun_nesnesi: PackedScene = preload("res://sahneler/Oyun.tscn")
 
+var oyun_instance
+
 func _ready():
     quit_button.connect("button_down", self, "_quit")
     create_server_button.connect("button_down", self, "_open_create_server_menu")
@@ -57,3 +59,4 @@ func _connect_server(server_ip, server_port):
 
 func _back_button_pressed():
     controller.resume_game()
+  

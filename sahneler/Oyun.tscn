@@ -82,11 +82,10 @@ margin_bottom = 96.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
-text = "0"
 align = 1
 valign = 1
 
-[node name="lobi" type="Node2D" parent="."]
+[node name="lobi" type="YSort" parent="."]
 
 [node name="start" type="Position2D" parent="lobi"]
 position = Vector2( 642, 641 )
